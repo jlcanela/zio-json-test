@@ -26,6 +26,9 @@ object App {
         val jsonList: List[(MetricKey, String)] = List(aMetricKey -> "value")
         println(jsonList.toJson)
         
+        // a test suggested by Rob, looks good
+        val _ = implicitly[JsonCodec[MetricKey]]
+
         // codecMap cause the following error
         // magnolia: could not infer DeriveJsonEncoder.Typeclass for type Map[zio.metrics.MetricKey,zio.metrics.MetricState]
         // implicit val codecMap: JsonCodec[Map[MetricKey, MetricState]] = DeriveJsonCodec.gen[Map[MetricKey, MetricState]]
